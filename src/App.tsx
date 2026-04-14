@@ -1,85 +1,125 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import './App.css';
-import Header from './components/Header';
-import ProductGrid from './components/ProductGrid';
-import ValidationPanel from './components/ValidationPanel';
+import Header from './components/Header.tsx';
+import ProductGrid from './components/ProductGrid.tsx';
+import ValidationPanel from './components/ValidationPanel.tsx';
+import AdditionalInfoStep from './components/AdditionalInfoStep';
 import { mockProducts } from './data/mockProducts';
-import {
-  validateProduct,
-  type ProductRow,
-} from './utils/validateProduct';
+import { PLATFORM_OPTIONS } from './config/fieldConfig';
+import { parseAnyTabularFile, parsePlatformOptions } from './utils/fileParsers';
+import { rowsToProducts } from './utils/productMappers';
+import { validateProduct, type ProductRow } from './utils/validateProduct';
 
 export default function App() {
   const [products, setProducts] = useState<ProductRow[]>(mockProducts);
-  const [selectedId, setSelectedId] = useState<string>(mockProducts[0]?.id ?? '');
   const [lastValidatedAt, setLastValidatedAt] = useState<number | null>(null);
+  const [uploadedFileName, setUploadedFileName] = useState<string>('');
+  const [currentStep, setCurrentStep] = useState<'grid' | 'extra'>('grid');
+  const [, setValidatedProducts] = useState<ProductRow[]>(mockProducts);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const selectedProduct = useMemo(() => {
-    return products.find((p) => p.id === selectedId) ?? null;
-  }, [products, selectedId]);
+  const allValidationResults = useMemo(() => {
+    return products.map((product) => ({
+      product,
+      result: validateProduct(product),
+    }));
+  }, [products]);
 
-  const validation = useMemo(() => {
-    if (!selectedProduct) return null;
-    return validateProduct(selectedProduct);
-  }, [selectedProduct]);
+  const allIssues = useMemo(() => {
+    return allValidationResults.flatMap(({ result }) => result.issues);
+  }, [allValidationResults]);
 
-  const updateCommonField = (productId: string, field: string, value: string) => {
-    setProducts((prev) =>
-      prev.map((p) => (p.id === productId ? { ...p, common: { ...p.common, [field]: value } } : p)),
-    );
+  const allProductsValid = allIssues.length === 0;
+
+  const handleDownloadTemplate = async () => {
+    const templatePath = '/template.xlsm';
+    const templateExists = await fetch(templatePath, { method: 'HEAD' }).then((res) => res.ok);
+    if (!templateExists) {
+      alert('找不到模板 template.xlsm，請先把檔案放到 public/template.xlsm');
+      return;
+    }
+
+    const link = document.createElement('a');
+    link.href = templatePath;
+    link.download = 'template.xlsm';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   };
 
-  const updateTargets = (productId: string, targets: string[]) => {
-    setProducts((prev) =>
-      prev.map((p) => (p.id === productId ? { ...p, targets: targets as ProductRow['targets'] } : p)),
-    );
+  const handleUploadMainFile = async (file: File) => {
+    const [rows, parsedPlatformOptions] = await Promise.all([
+      parseAnyTabularFile(file),
+      parsePlatformOptions(file),
+    ]);
+
+    const nextPlatformOptions = parsedPlatformOptions.length
+      ? parsedPlatformOptions
+      : [...PLATFORM_OPTIONS];
+
+    const parsedProducts = rowsToProducts(rows, nextPlatformOptions);
+    if (!parsedProducts.length) return;
+
+    setProducts(parsedProducts);
+    setValidatedProducts(parsedProducts);
+    setLastValidatedAt(null);
+    setUploadedFileName(file.name);
+    setCurrentStep('grid');
+  };
+
+  const handleValidate = () => {
+    setValidatedProducts(products);
+    setLastValidatedAt(Date.now());
+  };
+
+  const handleNext = () => {
+    if (!allProductsValid) {
+      alert('請先完成驗證並修正缺失欄位，再進入下一步');
+      return;
+    }
+    setCurrentStep('extra');
   };
 
   return (
     <div className="appShell">
       <Header
-        onLoad={function () {
-          setProducts(mockProducts);
-          setSelectedId(mockProducts[0]?.id ?? '');
-          setLastValidatedAt(null);
-        }}
-        onSave={function () {
-          // MVP：先不串出 API / CSV
-          // 這裡用 console 讓你可確認目前狀態
-          // eslint-disable-next-line no-console
-          console.log('MVP save (no-op):', products);
-        }}
-        onValidate={function () {
-          setLastValidatedAt(Date.now());
-        }}
-        onPlatformSettings={function () {
-          alert('MVP：平台設定尚未實作（下一步再做）。');
+        onDownloadTemplate={handleDownloadTemplate}
+        onUploadFile={() => fileInputRef.current?.click()}
+        onValidate={handleValidate}
+        onNext={handleNext}
+        uploadedFileName={uploadedFileName}
+        canGoNext={allProductsValid}
+      />
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept=".csv,.xlsx,.xls,.xlsm,text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        className="hiddenInput"
+        onChange={async (event) => {
+          const input = event.currentTarget;
+          const file = input.files?.[0];
+          if (file) await handleUploadMainFile(file);
+          input.value = '';
         }}
       />
 
-      <div className="content">
-        <div className="gridPane">
-          <ProductGrid
-            products={products}
-            selectedId={selectedId}
-            onSelectProduct={setSelectedId}
-            onUpdateCommonField={updateCommonField}
-            onUpdateTargets={updateTargets}
-          />
-        </div>
+      {currentStep === 'grid' ? (
+        <div className="content">
+          <div className="gridPane">
+            {allIssues.length === 0 ? (
+              <div className="emptyPanel">目前沒有缺漏或格式錯誤</div>
+            ) : (
+              <ProductGrid issues={allIssues} />
+            )}
+          </div>
 
-        <aside className="sidePane">
-          {selectedProduct && validation ? (
-            <ValidationPanel
-              product={selectedProduct}
-              validation={validation}
-              lastValidatedAt={lastValidatedAt}
-            />
-          ) : (
-            <div className="emptyPanel">尚未選擇商品</div>
-          )}
-        </aside>
-      </div>
+          <aside className="sidePane">
+            <ValidationPanel issues={allIssues} lastValidatedAt={lastValidatedAt} />
+          </aside>
+        </div>
+      ) : (
+        <AdditionalInfoStep products={products} onBack={() => setCurrentStep('grid')} />
+      )}
     </div>
   );
 }

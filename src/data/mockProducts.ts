@@ -3,6 +3,10 @@ import type { ProductRow } from '../utils/validateProduct';
 export const mockProducts: ProductRow[] = [
   {
     id: 'row-1',
+    source: {
+      sheetName: 'main',
+      excelRow: 4,
+    },
     common: {
       erp_product_name: '直白雙離子高速吹風機S1',
       sale_product_name: '高速BLDC正負離子吹風機-小甜筒',
@@ -39,6 +43,10 @@ export const mockProducts: ProductRow[] = [
   },
   {
     id: 'row-2',
+    source: {
+      sheetName: 'main',
+      excelRow: 5,
+    },
     common: {
       erp_product_name: '直白雙離子高速吹風機S2',
       sale_product_name: '高速BLDC正負離子吹風機-檸檬薄荷',
@@ -70,6 +78,10 @@ export const mockProducts: ProductRow[] = [
   },
   {
     id: 'row-3',
+    source: {
+      sheetName: 'main',
+      excelRow: 6,
+    },
     common: {
       erp_product_name: '直白雙離子高速吹風機S3',
       sale_product_name: '',
