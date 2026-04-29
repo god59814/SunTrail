@@ -1,0 +1,30 @@
+{
+    "011571": {
+        "scm_domain": "https://scmapi.momoshop.com.tw",
+        "entpCode": "011571",
+        "entpID": "53563181",
+        "entpPwd": "Qnnie0102",
+        "otpBackNo": "123"
+    },
+    "011966": {
+        "scm_domain": "https://scmapi.momoshop.com.tw",
+        "entpCode": "011966",
+        "entpID": "53563181",
+        "entpPwd": "DD20260102",
+        "otpBackNo": "123"
+    },
+    "021620": {
+        "scm_domain": "https://scmapi.momoshop.com.tw",
+        "entpCode": "021620",
+        "entpID": "53563181",
+        "entpPwd": "maple0102",
+        "otpBackNo": "674"
+    },
+    "026307": {
+        "scm_domain": "https://scmapi.momoshop.com.tw",
+        "entpCode": "026307",
+        "entpID": "53563181",
+        "entpPwd": "Chch0102",
+        "otpBackNo": "337"
+    }
+}

@@ -1,0 +1,92 @@
+{
+  "GET https://e-procurement.shopee.com/static/common-lib/vue/2.7.13/vue.min.js": {
+    "count": 6,
+    "statuses": {
+      "200": 3
+    }
+  },
+  "GET https://e-procurement.shopee.com/static/common-lib/vuex/3.6.2/vuex.min.js": {
+    "count": 6,
+    "statuses": {
+      "200": 3
+    }
+  },
+  "GET https://e-procurement.shopee.com/static/common-lib/vue-router/3.6.5/vue-router.min.js": {
+    "count": 6,
+    "statuses": {
+      "200": 3
+    }
+  },
+  "GET https://e-procurement.shopee.com/static/common-lib/vue-class-component/7.2.6/vue-class-component.min.js": {
+    "count": 6,
+    "statuses": {
+      "200": 3
+    }
+  },
+  "GET https://e-procurement.shopee.com/static/common-lib/vue-property-decorator/9.1.2/index.umd.js": {
+    "count": 6,
+    "statuses": {
+      "200": 3
+    }
+  },
+  "GET https://e-procurement.shopee.com/static/common-lib/vue-i18n/8.27.2/vue-i18n.min.js": {
+    "count": 6,
+    "statuses": {
+      "200": 3
+    }
+  },
+  "GET https://e-procurement.shopee.com/v2/application/add": {
+    "count": 2,
+    "statuses": {
+      "200": 1
+    }
+  },
+  "GET https://seller.shopee.sg/api/tsp/init?language=en&resources=927": {
+    "count": 5,
+    "statuses": {
+      "200": 2
+    }
+  },
+  "GET https://fonts.gstatic.com/s/roboto/v50/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiAo.woff2": {
+    "count": 4,
+    "statuses": {
+      "200": 2
+    }
+  },
+  "POST https://dem.shopee.com/dem/janus/v1/app-auth/login": {
+    "count": 2,
+    "statuses": {
+      "200": 1
+    }
+  },
+  "GET https://e-procurement.shopee.com/api/v4/basis/srm/supplier_user/related_users": {
+    "count": 2,
+    "statuses": {
+      "401": 1
+    }
+  },
+  "POST https://e-procurement.shopee.com/api/v4/basis/srm/supplier_user/user/user_shop_list": {
+    "count": 2,
+    "statuses": {
+      "401": 1
+    }
+  },
+  "GET https://e-procurement.shopee.com/api/v4/basis/srm/supplier_user/current_user": {
+    "count": 2,
+    "statuses": {
+      "401": 1
+    }
+  },
+  "GET https://e-procurement.shopee.com/api/v4/basis/srm/supplier_user/logout": {
+    "count": 2,
+    "statuses": {
+      "200": 1
+    }
+  },
+  "POST https://autobahn.ssc.shopeemobile.com/data/": {
+    "count": 2,
+    "statuses": {
+      "200": 1
+    }
+  }
+}

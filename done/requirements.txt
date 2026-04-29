@@ -1,0 +1,12 @@
+# coupang商城 + momo + showmore — 合併依賴
+# Playwright 瀏覽器：安裝後請執行 `playwright install`（或 `python -m playwright install`）
+
+httpx
+openpyxl
+gspread
+google-auth
+Pillow
+pandas
+numpy
+requests
+playwright

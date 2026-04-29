@@ -1,0 +1,6 @@
+python build_shopee_mass_upload_with_category.py --use-gsheet --template MassUploadListingRequestTemplate_TW.xlsm --category-xls Shopee_category_list.xls --output-xlsx out\mass_upload_ready.xlsx
+
+python 2shopee_bulk_upload.py --file out\mass_upload_ready.xlsx    
+
+1.需要提供進價(成本價)
+2.上傳是送到草稿區，成功後會需要1.提交 2.聯絡業務進行審核

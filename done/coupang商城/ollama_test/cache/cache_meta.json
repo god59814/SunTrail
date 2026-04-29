@@ -1,0 +1,8 @@
+{
+  "classifier_version": "1.1-coupang",
+  "embed_model": "qwen3-embedding:0.6b",
+  "chat_model": "qwen3:4b",
+  "category_json_path": "D:\\work\\coupang商城\\results\\display_categories_TW.json",
+  "category_json_sha256": "f163749634090a3aa3b550a3535eddb14fc9feff900da8898380c2a57ebad3a9",
+  "category_json_mtime_ns": 1773196132000000000
+}

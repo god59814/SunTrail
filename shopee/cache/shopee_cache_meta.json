@@ -1,0 +1,7 @@
+{
+  "classifier_version": "1.0",
+  "embed_model": "qwen3-embedding:0.6b",
+  "chat_model": "qwen3:4b",
+  "category_xls_path": "C:\\Users\\blin\\OneDrive\\桌面\\work\\work\\shopee\\Shopee_category_list.xls",
+  "category_xls_sha256": "51bffa7350007f63e8850e0828865f6f6f76f2c80b3b3c7fb1616666aff1c8d8"
+}

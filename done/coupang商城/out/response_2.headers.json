@@ -1,0 +1,13 @@
+{
+  "content-type": "application/json;charset=UTF-8",
+  "server": "nginx",
+  "vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Accept-Encoding",
+  "content-encoding": "gzip",
+  "x-envoy-upstream-service-time": "625",
+  "x-envoy-decorator-operation": ":0/*",
+  "content-length": "100",
+  "date": "Wed, 25 Mar 2026 08:11:13 GMT",
+  "connection": "keep-alive",
+  "set-cookie": "PCID=36649597541089330068102; Max-Age=315360000; Expires=Sat, 22 Mar 2036 08:11:13 GMT; Path=/; Domain=coupang.com",
+  "strict-transport-security": "max-age=31536000"
+}

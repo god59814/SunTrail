@@ -1,0 +1,2 @@
+﻿group_name,category_code,category_mode,llm_category_code,llm_confidence,llm_reason,payload_file,uploaded,http_status,message,missing
+6971016545882,103910,llm,103910,0.95,商品是家庭用吹風機 [fallback: llm code not in candidates],out\payload_1.json,YES,200,response saved: out\response_1.json,

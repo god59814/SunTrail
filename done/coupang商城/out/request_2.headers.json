@@ -1,0 +1,7 @@
+{
+  "Authorization": "CEA algorithm=HmacSHA256, access-key=9d66fc2c-a92e-46c3-9042-6fa53ee0dbf3, signed-date=260325T081112Z, signature=f8d4f39de948f8d1d0b03cf7513df544f063b22b93d6a8cdba7f2098f686647e",
+  "Content-Type": "application/json;charset=UTF-8",
+  "Accept": "application/json",
+  "X-MARKET": "TW",
+  "X-Requested-By": "A1580000TG"
+}

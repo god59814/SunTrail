@@ -1,0 +1,82 @@
+{
+  "sendInfoList": [
+    {
+      "webBrandNo": "20210114154620302",
+      "isPrompt": "否",
+      "isGift": "否",
+      "batchSupNo": "10001",
+      "hasAs": "有",
+      "asDays": "365",
+      "asNote": "保固說明",
+      "mainEcCategoryCode": "1000500001",
+      "buyPrice": "1200",
+      "goodsType": "01",
+      "isECWarehouse": "否",
+      "isCommission": "否",
+      "isAcceptTravelCard": "否",
+      "isIncludeInstall": "否",
+      "isPointReachDate": "否",
+      "outplaceSeq": "000009",
+      "outplaceSeqRtn": "000009",
+      "saleUnit": "無",
+      "displaySpecImg": "規格1",
+      "liveStreamYn": "1",
+      "supGoodsName_salePoint": "高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)",
+      "supGoodsName": "雙離子高速吹風機S1(黃)",
+      "supGoodsName_brand": "直白",
+      "headline": "台灣金點設計獎",
+      "goodsSpec": "【商品名稱】ZHIBAI 直白 高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\n【顏色】起司黃、奶油白\n【型號】 S1\n【產地】中國 (詳見商品外包裝標示為主)\n【額定電壓】110V/60Hz\n【額定功率】1250W\n【保固】2年\n【BSMI】R39545\n【產品尺寸】 9.6x7.7x25cm\n【重量】378g\n【電線長度:】 1.8M\n【材質】 主機/PA+PC+ABS\n【商品特點】\n．速乾不耗時\n．超羽量級378g\n．2.4億正負離子\n\n【注意事項】\n．請存放於陰涼乾燥處，避免陽光直射及高溫。\n．因電腦螢幕設定及個人觀感之差異，本賣場之商品圖片僅供參考，以收到實際商品為準，請見諒。\n．商品到貨享猶豫期之權益（注意！猶豫期非試用期），辦理退貨商品必須是全新狀態且包裝完整，商品一經拆封，等同商品價值已受損，僅能以福利品出售，若需退換貨，我方須收取價值損失之費用(回復原狀、整新費)，請先確認商品正確、外觀可接受，再行使用。\n．請避免用力摩擦、使用銳利的器具。\n．本產品因製作方式與材質特性，色澤、尺寸有些微差異，表面小黑點、釉面上小氣孔、釉色些微不均勻，為正常現象，非產品瑕疵。\"",
+      "content": "速乾不耗時\n超羽量級378g\n2.4億正負離子",
+      "salePrice": "2980",
+      "custPrice": "4990",
+      "length": "36.3",
+      "width": "18.8",
+      "height": "10.5",
+      "weight": "0.37",
+      "originCode": "0086",
+      "temperatureType": "常溫",
+      "colSeq1": "004",
+      "colSeq2": "006",
+      "indexList": [
+        {
+          "indexNo": "A0001G0013",
+          "chosenItemNo": "A0001G0013C0001\tA0001G0013C0002\tA0001G0013C0003"
+        },
+        {
+          "indexNo": "A0001G0027",
+          "chosenItemNo": "A0001G0027C0033\tA0001G0027C0001\tA0001G0027C0035"
+        },
+        {
+          "indexNo": "A0003G0019",
+          "chosenItemNo": "A0003G0019C0004"
+        },
+        {
+          "indexNo": "A0006G0009",
+          "chosenItemNo": "A0006G0009C0011\tA0006G0009C0003\tA0006G0009C0006"
+        },
+        {
+          "indexNo": "A0037G0004",
+          "chosenItemNo": "A0037G0004C0001"
+        }
+      ],
+      "singleItemList": [
+        {
+          "entpGoodsNo": "6971016543543",
+          "internationalNo": "6971016543543",
+          "prepareQty": "100",
+          "colDetail1": "起司黃",
+          "colDetail2": "單一規格",
+          "supGoodsdtCode": "001",
+          "specImg1": "10001_01_001_B",
+          "specImg2": ""
+        }
+      ],
+      "mobileDetailInfo": {
+        "youtubeUrl": [
+          "OoxPlOPompc"
+        ],
+        "content": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "classifier_version": "1.1",
+  "embed_model": "qwen3-embedding:0.6b",
+  "chat_model": "qwen3:4b",
+  "category_json_path": "C:\\Users\\blin\\OneDrive\\桌面\\work\\brian\\momo\\momotest\\category.json",
+  "category_json_sha256": "05a7e9d4b17fc5669ae02b2b447fddb4a13d76732a546312e721aebaf127ea1b",
+  "category_json_mtime_ns": 1773377934876801200
+}

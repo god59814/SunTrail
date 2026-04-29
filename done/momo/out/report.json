@@ -1,0 +1,435 @@
+{
+  "payload": "D:\\work\\momo\\payload.json",
+  "asset_root": "D:\\work\\shared\\assets",
+  "stage_dir": "D:\\work\\momo\\out\\stage",
+  "zip_path": "D:\\work\\momo\\out\\images.zip",
+  "products": [
+    {
+      "batch_sup_no": "10001",
+      "sale_product_name": "高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)",
+      "erp_sku": "6971016543543",
+      "sale_folder": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)",
+      "sku_folder": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\6971016543543",
+      "copied_files": [
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\6971016543543\\main\\main_01.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_B1.jpg",
+          "role": "main_1"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\6971016543543\\main\\main_02.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_B2.jpg",
+          "role": "main_2"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\6971016543543\\main\\main_03.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_B3.jpg",
+          "role": "main_3"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\main\\main_01.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_B4.jpg",
+          "role": "main_4"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\main\\main_02.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_B5.jpg",
+          "role": "main_5"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\main\\main_03.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_B6.jpg",
+          "role": "main_6"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\6971016543543\\main\\main_03.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_O.jpg",
+          "role": "ad"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_01.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_1.jpg",
+          "role": "mobile_desc_1"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_02.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_2.jpg",
+          "role": "mobile_desc_2"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_03.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_3.jpg",
+          "role": "mobile_desc_3"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_04.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_4.jpg",
+          "role": "mobile_desc_4"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_05.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_5.jpg",
+          "role": "mobile_desc_5"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_06.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_6.jpg",
+          "role": "mobile_desc_6"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_07.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_7.jpg",
+          "role": "mobile_desc_7"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_08.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_8.jpg",
+          "role": "mobile_desc_8"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_09.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_9.jpg",
+          "role": "mobile_desc_9"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_10.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_10.jpg",
+          "role": "mobile_desc_10"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_11.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_11.jpg",
+          "role": "mobile_desc_11"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_13.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_12.jpg",
+          "role": "mobile_desc_12"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_14.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_13.jpg",
+          "role": "mobile_desc_13"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_15.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_14.jpg",
+          "role": "mobile_desc_14"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_16.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_15.jpg",
+          "role": "mobile_desc_15"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_17.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_16.jpg",
+          "role": "mobile_desc_16"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\common\\desc\\desc_18.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_m_1_17.jpg",
+          "role": "mobile_desc_17"
+        },
+        {
+          "src": "D:\\work\\shared\\assets\\高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)\\6971016543543\\main\\main_01.jpg",
+          "dst": "D:\\work\\momo\\out\\stage\\10001_01_001_B.jpg",
+          "role": "spec_1"
+        }
+      ],
+      "image_checks": [
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_B1.jpg",
+          "role": "main_1",
+          "ok": false,
+          "width": 1000,
+          "height": 1000,
+          "size_kb": 142.28,
+          "white_border": false,
+          "messages": [
+            "主圖大小需 200KB~1000KB，目前 142.28KB"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_B2.jpg",
+          "role": "main_2",
+          "ok": false,
+          "width": 1000,
+          "height": 1000,
+          "size_kb": 76.18,
+          "white_border": true,
+          "messages": [
+            "疑似白邊",
+            "主圖大小需 200KB~1000KB，目前 76.18KB"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_B3.jpg",
+          "role": "main_3",
+          "ok": false,
+          "width": 1000,
+          "height": 1000,
+          "size_kb": 69.58,
+          "white_border": true,
+          "messages": [
+            "疑似白邊",
+            "主圖大小需 200KB~1000KB，目前 69.58KB"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_B4.jpg",
+          "role": "main_4",
+          "ok": false,
+          "width": 1000,
+          "height": 1000,
+          "size_kb": 157.63,
+          "white_border": false,
+          "messages": [
+            "主圖大小需 200KB~1000KB，目前 157.63KB"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_B5.jpg",
+          "role": "main_5",
+          "ok": false,
+          "width": 1000,
+          "height": 1000,
+          "size_kb": 85.13,
+          "white_border": true,
+          "messages": [
+            "疑似白邊",
+            "主圖大小需 200KB~1000KB，目前 85.13KB"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_B6.jpg",
+          "role": "main_6",
+          "ok": false,
+          "width": 1000,
+          "height": 1000,
+          "size_kb": 79.03,
+          "white_border": true,
+          "messages": [
+            "疑似白邊",
+            "主圖大小需 200KB~1000KB，目前 79.03KB"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_O.jpg",
+          "role": "ad",
+          "ok": false,
+          "width": 1000,
+          "height": 1000,
+          "size_kb": 69.58,
+          "white_border": true,
+          "messages": [
+            "疑似白邊"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_1.jpg",
+          "role": "mobile_desc_1",
+          "ok": true,
+          "width": 828,
+          "height": 1499,
+          "size_kb": 203.3,
+          "white_border": false,
+          "messages": []
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_2.jpg",
+          "role": "mobile_desc_2",
+          "ok": false,
+          "width": 977,
+          "height": 1499,
+          "size_kb": 131.12,
+          "white_border": true,
+          "messages": [
+            "疑似白邊"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_3.jpg",
+          "role": "mobile_desc_3",
+          "ok": false,
+          "width": 860,
+          "height": 1499,
+          "size_kb": 85.72,
+          "white_border": true,
+          "messages": [
+            "疑似白邊"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_4.jpg",
+          "role": "mobile_desc_4",
+          "ok": false,
+          "width": 1000,
+          "height": 797,
+          "size_kb": 68.71,
+          "white_border": true,
+          "messages": [
+            "疑似白邊"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_5.jpg",
+          "role": "mobile_desc_5",
+          "ok": false,
+          "width": 1000,
+          "height": 1137,
+          "size_kb": 90.76,
+          "white_border": true,
+          "messages": [
+            "疑似白邊"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_6.jpg",
+          "role": "mobile_desc_6",
+          "ok": false,
+          "width": 1000,
+          "height": 458,
+          "size_kb": 108.84,
+          "white_border": true,
+          "messages": [
+            "疑似白邊"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_7.jpg",
+          "role": "mobile_desc_7",
+          "ok": false,
+          "width": 1000,
+          "height": 924,
+          "size_kb": 127.01,
+          "white_border": true,
+          "messages": [
+            "疑似白邊"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_8.jpg",
+          "role": "mobile_desc_8",
+          "ok": true,
+          "width": 754,
+          "height": 1499,
+          "size_kb": 152.46,
+          "white_border": false,
+          "messages": []
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_9.jpg",
+          "role": "mobile_desc_9",
+          "ok": true,
+          "width": 1000,
+          "height": 1201,
+          "size_kb": 120.8,
+          "white_border": false,
+          "messages": []
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_10.jpg",
+          "role": "mobile_desc_10",
+          "ok": true,
+          "width": 858,
+          "height": 1499,
+          "size_kb": 178.95,
+          "white_border": false,
+          "messages": []
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_11.jpg",
+          "role": "mobile_desc_11",
+          "ok": true,
+          "width": 779,
+          "height": 1499,
+          "size_kb": 169.51,
+          "white_border": false,
+          "messages": []
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_12.jpg",
+          "role": "mobile_desc_12",
+          "ok": false,
+          "width": 1000,
+          "height": 1090,
+          "size_kb": 185.07,
+          "white_border": true,
+          "messages": [
+            "疑似白邊"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_13.jpg",
+          "role": "mobile_desc_13",
+          "ok": true,
+          "width": 775,
+          "height": 1499,
+          "size_kb": 203.63,
+          "white_border": false,
+          "messages": []
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_14.jpg",
+          "role": "mobile_desc_14",
+          "ok": true,
+          "width": 754,
+          "height": 1499,
+          "size_kb": 113.7,
+          "white_border": false,
+          "messages": []
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_15.jpg",
+          "role": "mobile_desc_15",
+          "ok": true,
+          "width": 754,
+          "height": 1499,
+          "size_kb": 136.62,
+          "white_border": false,
+          "messages": []
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_16.jpg",
+          "role": "mobile_desc_16",
+          "ok": false,
+          "width": 1000,
+          "height": 1300,
+          "size_kb": 165.68,
+          "white_border": true,
+          "messages": [
+            "疑似白邊"
+          ]
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_m_1_17.jpg",
+          "role": "mobile_desc_17",
+          "ok": true,
+          "width": 822,
+          "height": 1499,
+          "size_kb": 131.81,
+          "white_border": false,
+          "messages": []
+        },
+        {
+          "file": "D:\\work\\momo\\out\\stage\\10001_01_001_B.jpg",
+          "role": "spec_1",
+          "ok": false,
+          "width": 1000,
+          "height": 1000,
+          "size_kb": 142.28,
+          "white_border": false,
+          "messages": [
+            "規格圖大小需 200KB~1000KB，目前 142.28KB"
+          ]
+        }
+      ],
+      "mobile_text_file": null,
+      "warnings": [
+        "略過手機圖 desc_12.jpg，轉檔後寬度僅 718px，小於 750px",
+        "desc 裡找不到文字檔，已改用 payload.content 回填 mobileDetailInfo.content"
+      ]
+    }
+  ]
+}

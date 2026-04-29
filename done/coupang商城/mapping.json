@@ -1,0 +1,108 @@
+{
+  "input": {
+    "format": "gsheet",
+    "gsheet": {
+      "data_row_count": 2
+    }
+  },
+  "market": "TW",
+  "category": {
+    "mode": "llm",
+    "categories_json_path": "results/display_categories_TW.json",
+    "fallback_code": 63829,
+    "payload_field": "displayCategoryCode",
+    "llm_min_confidence": 0.55,
+    "llm_top_k": 10,
+    "auto": {
+      "source": "group_name"
+    },
+    "fixed": {
+      "code": 0,
+      "path": ""
+    }
+  },
+  "grouping": {
+    "group_key_column": "erp_sku",
+    "fallback_group_key_column": "sale_product_name"
+  },
+  "field_map": {
+    "brand": "brand",
+    "itemName": "erp_product_name",
+    "externalVendorSku": "erp_sku",
+    "barcode": "barcode",
+    "salePrice": "sale_price",
+    "originalPrice": "list_price",
+    "specName1": "spec_name_1",
+    "specValue1": "spec_value_1",
+    "modelNumber": "model_no",
+    "taxType": "tax_type",
+    "maximumBuyCount": "stock_qty",
+    "length_cm": "length_cm",
+    "width_cm": "width_cm",
+    "height_cm": "height_cm"
+  },
+  "payload_defaults": {
+    "saleStartedAt": "2026-02-10T00:00:00",
+    "saleEndedAt": "2099-12-31T00:00:00",
+    "unionDeliveryType": "NOT_UNION_DELIVERY",
+    "registrationType": "NORMAL",
+    "deliveryMethod": "SEQUENCIAL",
+    "deliveryCompanyCode": "TWL_KERRY",
+    "deliveryChargeType": "CONDITIONAL_FREE",
+    "deliveryCharge": 65,
+    "freeShipOverAmount": 999,
+    "deliveryChargeOnReturn": 0,
+    "outboundShippingPlaceCode": 23758360,
+    "returnCenterCode": "1002458303",
+    "returnChargeName": "駱國華",
+    "companyContactNumber": "+886933079175",
+    "returnZipCode": "335",
+    "returnAddress": "桃園市 大溪區",
+    "returnAddressDetail": "仁和路二段350號",
+    "returnCharge": 65,
+    "vendorUserId": "cp53563181",
+    "requested": false,
+    "multiReturnInfos": [
+      {
+        "pickUpBranchType": "HOME",
+        "pickUpBranchId": "",
+        "pickUpBranchGroupCode": "TWL_KERRY",
+        "returnCenterCode": "1002458303",
+        "returnChargeName": "駱國華",
+        "companyContactNumber": "+886933079175",
+        "returnZipCode": "335",
+        "returnAddress": "桃園市 大溪區",
+        "returnAddressDetail": "仁和路二段350號",
+        "returnCharge": 65
+      }
+    ],
+    "multiShippingInfos": [
+      {
+        "deliveryCompanyType": "HOME_DELIVERY",
+        "deliveryCompanyCode": "TWL_KERRY",
+        "deliveryChargeType": "CONDITIONAL_FREE",
+        "deliveryCharge": 65,
+        "freeShipOverAmount": 999,
+        "deliveryChargeOnReturn": 0,
+        "deliveryMethod": "SEQUENCIAL",
+        "outboundShippingPlaceId": 23758360,
+        "outboundShippingTime": 144
+      }
+    ]
+  },
+  "item_defaults": {
+    "maximumBuyCount": 99999,
+    "maximumBuyForPerson": 0,
+    "maximumBuyForPersonPeriod": 1,
+    "outboundShippingTimeDay": 6,
+    "unitCount": 1,
+    "adultOnly": "EVERYONE",
+    "taxType": "TAX",
+    "detail_html": "<html><body><p>商品為公司貨，品質保證。</p><p>如需協助請聯絡客服。</p></body></html>"
+  },
+  "validation": {
+    "require_each_item_main_image": true,
+    "require_home_delivery": false,
+    "require_home_return": true
+  }
+}

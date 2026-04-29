@@ -1,0 +1,638 @@
+[
+  {
+    "row_no": 1,
+    "sale_product_name": "高速BLDC正負離子吹風機-小甜筒-兩色可選(S1)",
+    "erp_product_name": "直白雙離子高速吹風機S1(黃)",
+    "brand": "ZHIBAI 直白",
+    "product_text": "高速BLDC正負離子吹風機-小甜筒-兩色可選(S1) 直白雙離子高速吹風機S1(黃) ZHIBAI 直白 台灣金點設計獎 速乾不耗時\n超羽量級378g\n2.4億正負離子 起司黃",
+    "picked_code": "1000500001",
+    "picked_path": "家電 > 美容家電 > 吹風機",
+    "need_review": false,
+    "category_candidates": [
+      {
+        "code": "1000500001",
+        "breadcrumb": "家電 > 美容家電 > 吹風機",
+        "leaf_name": "吹風機",
+        "level_1_name": "家電",
+        "level_2_name": "美容家電",
+        "level_3_name": "吹風機",
+        "level_4_name": "",
+        "base_score": 41.9,
+        "family_score": 7.0,
+        "final_score": 48.9,
+        "family": "hair_dryer",
+        "reasons": [
+          "leaf_overlap:['吹風機'](+12.5)",
+          "l3_overlap:['吹風機'](+5.2)",
+          "bc_overlap:['吹風機'](+0.8)",
+          "leaf_exact:吹風機(+12)",
+          "l3_exact:吹風機(+5)",
+          "product_contains_leaf:吹風機(+6)",
+          "depth_bonus:+0.4",
+          "family_related:hair_dryer(+3.0)",
+          "family_hint:負離子(+0.8)",
+          "family_hint:雙離子(+0.8)",
+          "family_hint:正負離子(+0.8)",
+          "family_hint:高速(+0.8)",
+          "family_hint:bldc(+0.8)"
+        ]
+      },
+      {
+        "code": "2700200014",
+        "breadcrumb": "寢具傢飾 > 收納用品 > 壁掛架/掛勾 > 吹風機架",
+        "leaf_name": "吹風機架",
+        "level_1_name": "寢具傢飾",
+        "level_2_name": "收納用品",
+        "level_3_name": "壁掛架/掛勾",
+        "level_4_name": "吹風機架",
+        "base_score": 9.8,
+        "family_score": -5.0,
+        "final_score": 4.8,
+        "family": "hair_dryer",
+        "reasons": [
+          "leaf_contains:吹風機(+5)",
+          "l4_contains:吹風機(+4)",
+          "depth_bonus:+0.8",
+          "family_related:hair_dryer(+3.0)",
+          "family_hint:負離子(+0.8)",
+          "family_hint:雙離子(+0.8)",
+          "family_hint:正負離子(+0.8)",
+          "family_hint:高速(+0.8)",
+          "family_hint:bldc(+0.8)",
+          "family_negative:吹風機架(-6.0)",
+          "family_negative:掛架(-6.0)"
+        ]
+      },
+      {
+        "code": "2401500037",
+        "breadcrumb": "圖書/影音 > 旅遊 > 地圖 > 台灣",
+        "leaf_name": "台灣",
+        "level_1_name": "圖書/影音",
+        "level_2_name": "旅遊",
+        "level_3_name": "地圖",
+        "level_4_name": "台灣",
+        "base_score": 6.8,
+        "family_score": -10.0,
+        "final_score": -3.2,
+        "family": "hair_dryer",
+        "reasons": [
+          "product_contains_leaf:台灣(+6)",
+          "depth_bonus:+0.8",
+          "not_family_related:hair_dryer(-10.0)"
+        ]
+      },
+      {
+        "code": "4000100206",
+        "breadcrumb": "數位內容 > 電子書 > 藝術設計 > 設計",
+        "leaf_name": "設計",
+        "level_1_name": "數位內容",
+        "level_2_name": "電子書",
+        "level_3_name": "藝術設計",
+        "level_4_name": "設計",
+        "base_score": 6.8,
+        "family_score": -10.0,
+        "final_score": -3.2,
+        "family": "hair_dryer",
+        "reasons": [
+          "product_contains_leaf:設計(+6)",
+          "depth_bonus:+0.8",
+          "not_family_related:hair_dryer(-10.0)"
+        ]
+      },
+      {
+        "code": "4000100116",
+        "breadcrumb": "數位內容 > 電子書 > 旅遊 > 台灣",
+        "leaf_name": "台灣",
+        "level_1_name": "數位內容",
+        "level_2_name": "電子書",
+        "level_3_name": "旅遊",
+        "level_4_name": "台灣",
+        "base_score": 6.8,
+        "family_score": -10.0,
+        "final_score": -3.2,
+        "family": "hair_dryer",
+        "reasons": [
+          "product_contains_leaf:台灣(+6)",
+          "depth_bonus:+0.8",
+          "not_family_related:hair_dryer(-10.0)"
+        ]
+      }
+    ],
+    "required_indexes": [
+      {
+        "indexNo": "A0001G0013",
+        "indexName": "有線/無線",
+        "checkYn": "1",
+        "isMulti": true,
+        "options": [
+          {
+            "name": "有線",
+            "code": "A0001G0013C0001"
+          },
+          {
+            "name": "無線",
+            "code": "A0001G0013C0002"
+          },
+          {
+            "name": "多合一",
+            "code": "A0001G0013C0003"
+          },
+          {
+            "name": "藍芽",
+            "code": "A0001G0013C0004"
+          },
+          {
+            "name": "無",
+            "code": "A0001G0013C0005"
+          }
+        ]
+      },
+      {
+        "indexNo": "A0001G0027",
+        "indexName": "電壓",
+        "checkYn": "1",
+        "isMulti": true,
+        "options": [
+          {
+            "name": "1.1V",
+            "code": "A0001G0027C0033"
+          },
+          {
+            "name": "1.2V",
+            "code": "A0001G0027C0001"
+          },
+          {
+            "name": "1.25V",
+            "code": "A0001G0027C0035"
+          },
+          {
+            "name": "1.3V",
+            "code": "A0001G0027C0038"
+          },
+          {
+            "name": "1.35V",
+            "code": "A0001G0027C0002"
+          },
+          {
+            "name": "1.4V",
+            "code": "A0001G0027C0037"
+          },
+          {
+            "name": "1.45V",
+            "code": "A0001G0027C0039"
+          },
+          {
+            "name": "1.5V",
+            "code": "A0001G0027C0003"
+          },
+          {
+            "name": "1.8V",
+            "code": "A0001G0027C0004"
+          },
+          {
+            "name": "2.5V",
+            "code": "A0001G0027C0005"
+          },
+          {
+            "name": "3V",
+            "code": "A0001G0027C0030"
+          },
+          {
+            "name": "4V",
+            "code": "A0001G0027C0014"
+          },
+          {
+            "name": "5V",
+            "code": "A0001G0027C0015"
+          },
+          {
+            "name": "8V",
+            "code": "A0001G0027C0016"
+          },
+          {
+            "name": "12V",
+            "code": "A0001G0027C0006"
+          },
+          {
+            "name": "24V",
+            "code": "A0001G0027C0017"
+          },
+          {
+            "name": "110V",
+            "code": "A0001G0027C0007"
+          },
+          {
+            "name": "220V",
+            "code": "A0001G0027C0008"
+          },
+          {
+            "name": "240V",
+            "code": "A0001G0027C0028"
+          },
+          {
+            "name": "110V轉220V",
+            "code": "A0001G0027C0009"
+          },
+          {
+            "name": "220V轉110V",
+            "code": "A0001G0027C0010"
+          },
+          {
+            "name": "單電壓",
+            "code": "A0001G0027C0011"
+          },
+          {
+            "name": "雙電壓",
+            "code": "A0001G0027C0012"
+          },
+          {
+            "name": "全電壓",
+            "code": "A0001G0027C0013"
+          },
+          {
+            "name": "電池",
+            "code": "A0001G0027C0025"
+          },
+          {
+            "name": "無需電",
+            "code": "A0001G0027C0018"
+          }
+        ]
+      },
+      {
+        "indexNo": "A0003G0019",
+        "indexName": "吹風機",
+        "checkYn": "1",
+        "isMulti": true,
+        "options": [
+          {
+            "name": "冷風",
+            "code": "A0003G0019C0001"
+          },
+          {
+            "name": "遠紅外線",
+            "code": "A0003G0019C0002"
+          },
+          {
+            "name": "多段溫控",
+            "code": "A0003G0019C0003"
+          },
+          {
+            "name": "負離子",
+            "code": "A0003G0019C0004"
+          },
+          {
+            "name": "膠原蛋白",
+            "code": "A0003G0019C0005"
+          },
+          {
+            "name": "低磁波",
+            "code": "A0003G0019C0006"
+          },
+          {
+            "name": "奈米水離子",
+            "code": "A0003G0019C0007"
+          },
+          {
+            "name": "奈米陶瓷",
+            "code": "A0003G0019C0008"
+          }
+        ]
+      },
+      {
+        "indexNo": "A0006G0009",
+        "indexName": "髮質",
+        "checkYn": "1",
+        "isMulti": true,
+        "options": [
+          {
+            "name": "所有髮質",
+            "code": "A0006G0009C0011"
+          },
+          {
+            "name": "油性髮質",
+            "code": "A0006G0009C0003"
+          },
+          {
+            "name": "乾性髮質",
+            "code": "A0006G0009C0006"
+          }
+        ]
+      },
+      {
+        "indexNo": "A0037G0004",
+        "indexName": "消耗功率",
+        "checkYn": "0",
+        "isMulti": false,
+        "options": [
+          {
+            "name": "6W以下",
+            "code": "A0037G0004C0001"
+          },
+          {
+            "name": "7W~10W",
+            "code": "A0037G0004C0002"
+          },
+          {
+            "name": "11W~15W",
+            "code": "A0037G0004C0003"
+          },
+          {
+            "name": "16W~20W",
+            "code": "A0037G0004C0004"
+          },
+          {
+            "name": "21W~30W",
+            "code": "A0037G0004C0005"
+          },
+          {
+            "name": "31W~50W",
+            "code": "A0037G0004C0006"
+          },
+          {
+            "name": "51W~100W",
+            "code": "A0037G0004C0016"
+          },
+          {
+            "name": "101W~200W",
+            "code": "A0037G0004C0017"
+          },
+          {
+            "name": "201W~300W",
+            "code": "A0037G0004C0018"
+          },
+          {
+            "name": "301W~400W",
+            "code": "A0037G0004C0019"
+          },
+          {
+            "name": "401W~600W",
+            "code": "A0037G0004C0020"
+          },
+          {
+            "name": "601W~800W",
+            "code": "A0037G0004C0021"
+          },
+          {
+            "name": "801W~1000W",
+            "code": "A0037G0004C0022"
+          },
+          {
+            "name": "1001W~1200W",
+            "code": "A0037G0004C0023"
+          },
+          {
+            "name": "1201W~1400W",
+            "code": "A0037G0004C0024"
+          },
+          {
+            "name": "1401W~1500W",
+            "code": "A0037G0004C0025"
+          },
+          {
+            "name": "1501W~2000W",
+            "code": "A0037G0004C0026"
+          },
+          {
+            "name": "2001W~2500W",
+            "code": "A0037G0004C0027"
+          },
+          {
+            "name": "2500W以上",
+            "code": "A0037G0004C0028"
+          }
+        ]
+      }
+    ],
+    "matched_indexes": [
+      {
+        "indexNo": "A0003G0019",
+        "indexName": "吹風機",
+        "chosenItemNo": "A0003G0019C0004",
+        "chosenItemName": "負離子",
+        "score": 10,
+        "isMulti": true
+      }
+    ],
+    "unmatched_indexes": [
+      {
+        "indexNo": "A0001G0013",
+        "indexName": "有線/無線",
+        "options": [
+          {
+            "name": "有線",
+            "code": "A0001G0013C0001"
+          },
+          {
+            "name": "無線",
+            "code": "A0001G0013C0002"
+          },
+          {
+            "name": "多合一",
+            "code": "A0001G0013C0003"
+          },
+          {
+            "name": "藍芽",
+            "code": "A0001G0013C0004"
+          },
+          {
+            "name": "無",
+            "code": "A0001G0013C0005"
+          }
+        ]
+      },
+      {
+        "indexNo": "A0001G0027",
+        "indexName": "電壓",
+        "options": [
+          {
+            "name": "1.1V",
+            "code": "A0001G0027C0033"
+          },
+          {
+            "name": "1.2V",
+            "code": "A0001G0027C0001"
+          },
+          {
+            "name": "1.25V",
+            "code": "A0001G0027C0035"
+          },
+          {
+            "name": "1.3V",
+            "code": "A0001G0027C0038"
+          },
+          {
+            "name": "1.35V",
+            "code": "A0001G0027C0002"
+          },
+          {
+            "name": "1.4V",
+            "code": "A0001G0027C0037"
+          },
+          {
+            "name": "1.45V",
+            "code": "A0001G0027C0039"
+          },
+          {
+            "name": "1.5V",
+            "code": "A0001G0027C0003"
+          },
+          {
+            "name": "1.8V",
+            "code": "A0001G0027C0004"
+          },
+          {
+            "name": "2.5V",
+            "code": "A0001G0027C0005"
+          },
+          {
+            "name": "3V",
+            "code": "A0001G0027C0030"
+          },
+          {
+            "name": "4V",
+            "code": "A0001G0027C0014"
+          },
+          {
+            "name": "5V",
+            "code": "A0001G0027C0015"
+          },
+          {
+            "name": "8V",
+            "code": "A0001G0027C0016"
+          },
+          {
+            "name": "12V",
+            "code": "A0001G0027C0006"
+          },
+          {
+            "name": "24V",
+            "code": "A0001G0027C0017"
+          },
+          {
+            "name": "110V",
+            "code": "A0001G0027C0007"
+          },
+          {
+            "name": "220V",
+            "code": "A0001G0027C0008"
+          },
+          {
+            "name": "240V",
+            "code": "A0001G0027C0028"
+          },
+          {
+            "name": "110V轉220V",
+            "code": "A0001G0027C0009"
+          }
+        ]
+      },
+      {
+        "indexNo": "A0006G0009",
+        "indexName": "髮質",
+        "options": [
+          {
+            "name": "所有髮質",
+            "code": "A0006G0009C0011"
+          },
+          {
+            "name": "油性髮質",
+            "code": "A0006G0009C0003"
+          },
+          {
+            "name": "乾性髮質",
+            "code": "A0006G0009C0006"
+          }
+        ]
+      },
+      {
+        "indexNo": "A0037G0004",
+        "indexName": "消耗功率",
+        "options": [
+          {
+            "name": "6W以下",
+            "code": "A0037G0004C0001"
+          },
+          {
+            "name": "7W~10W",
+            "code": "A0037G0004C0002"
+          },
+          {
+            "name": "11W~15W",
+            "code": "A0037G0004C0003"
+          },
+          {
+            "name": "16W~20W",
+            "code": "A0037G0004C0004"
+          },
+          {
+            "name": "21W~30W",
+            "code": "A0037G0004C0005"
+          },
+          {
+            "name": "31W~50W",
+            "code": "A0037G0004C0006"
+          },
+          {
+            "name": "51W~100W",
+            "code": "A0037G0004C0016"
+          },
+          {
+            "name": "101W~200W",
+            "code": "A0037G0004C0017"
+          },
+          {
+            "name": "201W~300W",
+            "code": "A0037G0004C0018"
+          },
+          {
+            "name": "301W~400W",
+            "code": "A0037G0004C0019"
+          },
+          {
+            "name": "401W~600W",
+            "code": "A0037G0004C0020"
+          },
+          {
+            "name": "601W~800W",
+            "code": "A0037G0004C0021"
+          },
+          {
+            "name": "801W~1000W",
+            "code": "A0037G0004C0022"
+          },
+          {
+            "name": "1001W~1200W",
+            "code": "A0037G0004C0023"
+          },
+          {
+            "name": "1201W~1400W",
+            "code": "A0037G0004C0024"
+          },
+          {
+            "name": "1401W~1500W",
+            "code": "A0037G0004C0025"
+          },
+          {
+            "name": "1501W~2000W",
+            "code": "A0037G0004C0026"
+          },
+          {
+            "name": "2001W~2500W",
+            "code": "A0037G0004C0027"
+          },
+          {
+            "name": "2500W以上",
+            "code": "A0037G0004C0028"
+          }
+        ]
+      }
+    ],
+    "index_list_for_payload": [
+      {
+        "indexNo": "A0003G0019",
+        "chosenItemNo": "A0003G0019C0004"
+      }
+    ]
+  }
+]
