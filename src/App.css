@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px 16px;
+  padding: 12px 0;
   border-bottom: 1px solid var(--border);
   box-sizing: border-box;
 }
@@ -68,25 +68,36 @@
 .content {
   display: flex;
   gap: 16px;
-  padding: 16px;
+  padding: 12px;
   box-sizing: border-box;
   flex: 1;
   width: 100%;
+  border-radius: 12px;
+  margin: 8px 0 12px;
+}
+
+.contentError {
+  background: #fef2f2;
+}
+
+.contentOk {
+  background: #f0fdf4;
 }
 
 .gridPane {
   flex: 1;
-  min-width: 640px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
 }
 
 .sidePane {
-  width: 380px;
-  max-width: 40vw;
+  width: 200px;
+  max-width: 24vw;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   border-left: 1px solid var(--border);
   padding-left: 16px;
   box-sizing: border-box;
@@ -101,6 +112,7 @@
 
 .panel {
   padding: 12px 0;
+  text-align: left;
 }
 
 .panelHeader {
@@ -113,12 +125,21 @@
   font-weight: 700;
   color: var(--text-h);
   margin: 0 0 4px;
+  text-align: left;
 }
 
 .panelSub {
   margin: 0;
-  color: var(--text);
-  font-size: 14px;
+  color: #7c3aed;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.panelSubDetail {
+  font-size: 16px;
+  white-space: nowrap;
 }
 
 .panelSection {
@@ -153,11 +174,70 @@
   font-size: 12px;
   color: var(--text);
   margin-top: 8px;
+  text-align: left;
+}
+
+.panelActions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.panelActions .topBarBtn {
+  width: 100%;
+  text-align: center;
+}
+
+.panelActionBtn {
+  border-width: 1px;
+  font-weight: 700;
+}
+
+.panelActionValidate {
+  background: #7c3aed;
+  border-color: #6d28d9;
+  color: #ffffff;
+}
+
+.panelActionValidate:hover {
+  background: #6d28d9;
+  border-color: #5b21b6;
+}
+
+.panelActionSubmit {
+  background: #0f766e;
+  border-color: #0d5f59;
+  color: #ffffff;
+}
+
+.panelActionSubmit:hover {
+  background: #0d5f59;
+  border-color: #134e4a;
+}
+
+.panelActionSubmit:disabled {
+  background: #99f6e4;
+  border-color: #5eead4;
+  color: #115e59;
+}
+
+.panelErrorGuide {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #fecaca;
+  background: #fff1f2;
+  color: #9f1239;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 1.45;
 }
 
 .panelList {
-  margin: 0;
+  margin: 8px 0 0;
   padding-left: 18px;
+  text-align: left;
 }
 
 .panelList li {
@@ -165,8 +245,16 @@
 }
 
 .panelOk {
-  color: var(--accent);
-  font-weight: 600;
+  color: #7c3aed;
+  font-weight: 700;
+}
+
+.panelSuccessCount {
+  display: inline-block;
+  margin-top: 4px;
+  color: #0f766e;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .targetsInput {
@@ -225,6 +313,59 @@
   display: none;
 }
 
+.onboardingCard {
+  margin: 12px 0;
+  padding: 18px 22px;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  background: #f8fbff;
+  color: #1e3a8a;
+  text-align: left;
+}
+
+.onboardingCard h2 {
+  margin: 0 0 10px;
+}
+
+.onboardingCard ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.onboardingCard li {
+  margin: 6px 0;
+}
+
+.selectionSummaryBar {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  border: 1px solid #dbeafe;
+  background: #eff6ff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selectionSummaryTitle {
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.selectionSummaryFields {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selectionSummaryFieldItem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #1e3a8a;
+  font-size: 13px;
+}
+
 .extraStep {
   padding: 16px;
   display: flex;
@@ -274,6 +415,30 @@
   gap: 12px;
 }
 
+.extraHint {
+  padding: 10px 12px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.extraFieldSelector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.extraFieldOption {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #374151;
+}
+
 .modalBackdrop {
   position: fixed;
   inset: 0;
@@ -307,6 +472,134 @@
   padding: 0 10px;
 }
 
+.formBlock textarea,
+.formBlock select {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.formBlock textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.priceTagEditor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.priceTagHint {
+  padding: 12px 14px;
+  border: 1px solid #dbeafe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.priceTagTableWrap {
+  overflow-x: auto;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  flex: 1;
+}
+
+.priceTagTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.priceTagTable th,
+.priceTagTable td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.priceTagTable th {
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.priceTagTable td {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.priceTagHeaderTwoLines {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.2;
+}
+
+.priceTagHeaderTwoLines>span {
+  white-space: nowrap;
+}
+
+.priceTagTable td input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 6px;
+  font-size: 13px;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.priceTagTable .priceTagCol-erp_sku {
+  width: 170px;
+  min-width: 170px;
+  white-space: nowrap;
+  word-break: normal;
+}
+
+.priceTagTable .priceTagCol-erp_product_name {
+  width: 160px;
+}
+
+.priceTagTable .priceTagCol-list_price,
+.priceTagTable .priceTagCol-all_price,
+.priceTagTable .priceTagKind-price,
+.priceTagTable .priceTagKind-fee,
+.priceTagTable .priceTagKind-cost {
+  width: 96px;
+}
+
+.submitBar {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submitWarningPanel {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid #f59e0b;
+  background: #fffbeb;
+  color: #92400e;
+  border-radius: 10px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .modalActions {
   display: flex;
   justify-content: flex-end;
@@ -330,6 +623,7 @@
   .content {
     flex-direction: column;
     padding: 12px;
+    margin: 8px 0 12px;
   }
 
   .gridPane {

@@ -9,7 +9,7 @@ export const PLATFORM_OPTIONS = [
   '誠品',
 ] as const;
 
-export type PlatformOption = (typeof PLATFORM_OPTIONS)[number];
+export type PlatformOption = string;
 
 export const MVP_GRID_FIELDS = [
   'targets',
@@ -29,6 +29,7 @@ export const MVP_GRID_FIELDS = [
   'width_cm',
   'height_cm',
   'weight_kg',
+  'list_price',
   'sale_price',
   'cost_price',
   'stock_qty',
@@ -44,7 +45,10 @@ export const COMMON_REQUIRED_FIELDS = [
   'erp_sku',
   'brand',
   'sale_price',
+  'cost_price',
   'stock_qty',
+  'delivery_type',
+  'temperature_type',
 ] as const;
 
 export type CommonRequiredField = (typeof COMMON_REQUIRED_FIELDS)[number];
@@ -79,6 +83,8 @@ export const FIELD_LABELS: Record<string, string> = {
   width_cm: '寬(cm)',
   height_cm: '高(cm)',
   weight_kg: '重量(KG)',
+  list_price: '建議售價',
+  all_price: '全平台售價',
   sale_price: '售價',
   cost_price: '成本價',
   stock_qty: '庫存',

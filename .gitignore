@@ -36,5 +36,11 @@ coverage/
 .env.*
 !.env.example
 
+# Google service account credentials
+shared/config/*.json
+!shared/config/*.example.json
+shared/uploads/
+shared/logs/
+
 # OS files
 Thumbs.db

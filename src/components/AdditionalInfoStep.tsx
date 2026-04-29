@@ -1,22 +1,21 @@
 import { useMemo, useState } from 'react';
+import { ADDITIONAL_INFO_FIELDS, type AdditionalInfoField } from '../config/additionalInfoFields';
 import type { ProductRow } from '../utils/validateProduct';
+import type { BuildGoogleSheetRowsResult } from '../server/buildGoogleSheetRows';
 
 type Props = {
   products: ProductRow[];
   onBack: () => void;
+  extraInfo: Record<string, Record<string, string>>;
+  onChangeExtraInfo: (next: Record<string, Record<string, string>>) => void;
+  onSubmitToGoogleSheet: () => void;
+  submitLoading?: boolean;
+  submitWarnings?: BuildGoogleSheetRowsResult | null;
 };
 
-type ExtraFields = {
-  bsmi: string;
-  ncc: string;
-  inspection: string;
-  energyReport: string;
-  waterLabel: string;
-};
+type ExtraInfoMap = Record<string, Record<string, string>>;
 
-type ExtraInfoMap = Record<string, ExtraFields>;
-
-function inferRecommendedFields(product: ProductRow) {
+function inferRecommendedFieldKeys(product: ProductRow) {
   const text = [
     product.common.erp_product_name,
     product.common.sale_product_name,
@@ -26,44 +25,94 @@ function inferRecommendedFields(product: ProductRow) {
     .map((v) => String(v ?? '').toLowerCase())
     .join(' ');
 
-  return {
-    bsmi: /電|家電|吹風機|冰箱|洗衣機|除濕機|電風扇/.test(text),
-    ncc: /藍牙|wifi|無線|耳機|路由器|手機|通訊/.test(text),
-    inspection: /食品|玩具|電器|檢驗/.test(text),
-    energyReport: /冰箱|冷氣|除濕機|洗衣機/.test(text),
-    waterLabel: /水龍頭|蓮蓬頭|馬桶|省水/.test(text),
-  };
+  const keys = new Set<string>();
+  if (/電|家電|吹風機|冰箱|洗衣機|除濕機|電風扇/.test(text)) keys.add('bsmi');
+  if (/藍牙|wifi|無線|耳機|路由器|手機|phone|通訊/.test(text)) keys.add('ncc');
+  if (/食品|玩具|電器|檢驗/.test(text)) keys.add('inspection');
+  if (/冰箱|冷氣|除濕機|洗衣機/.test(text)) keys.add('energyReport');
+  if (/水龍頭|蓮蓬頭|馬桶|省水/.test(text)) keys.add('waterLabel');
+  return keys;
 }
 
-export default function AdditionalInfoStep({ products, onBack }: Props) {
-  const [selectedId, setSelectedId] = useState(products[0]?.id ?? '');
-  const [extraInfo, setExtraInfo] = useState<ExtraInfoMap>({});
+function renderFieldControl(
+  field: AdditionalInfoField,
+  value: string,
+  onChange: (value: string) => void,
+) {
+  if (field.inputType === 'textarea') {
+    return (
+      <textarea
+        value={value}
+        placeholder={field.placeholder ?? ''}
+        onChange={(e) => onChange(e.target.value)}
+      />
+    );
+  }
 
-  const selectedProduct = useMemo(
-    () => products.find((p) => p.id === selectedId) ?? null,
-    [products, selectedId],
+  if (field.inputType === 'select') {
+    return (
+      <select value={value} onChange={(e) => onChange(e.target.value)}>
+        <option value="">請選擇</option>
+        {(field.options ?? []).map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    );
+  }
+
+  return (
+    <input
+      value={value}
+      placeholder={field.placeholder ?? ''}
+      onChange={(e) => onChange(e.target.value)}
+    />
+  );
+}
+
+export default function AdditionalInfoStep({
+  products,
+  onBack,
+  extraInfo,
+  onChangeExtraInfo,
+  onSubmitToGoogleSheet,
+  submitLoading = false,
+  submitWarnings,
+}: Props) {
+  const [selectedId, setSelectedId] = useState(products[0]?.id ?? '');
+  const [enabledFieldKeys, setEnabledFieldKeys] = useState<string[]>(
+    ADDITIONAL_INFO_FIELDS.map((field) => field.key),
   );
 
-  const recommended = selectedProduct ? inferRecommendedFields(selectedProduct) : null;
+  const effectiveSelectedId = useMemo(() => {
+    if (!products.length) return '';
+    return products.some((p) => p.id === selectedId) ? selectedId : products[0]?.id ?? '';
+  }, [products, selectedId]);
 
-  const emptyFields: ExtraFields = {
-    bsmi: '',
-    ncc: '',
-    inspection: '',
-    energyReport: '',
-    waterLabel: '',
-  };
+  const selectedProduct = useMemo(
+    () => products.find((p) => p.id === effectiveSelectedId) ?? null,
+    [products, effectiveSelectedId],
+  );
 
-  const currentValue = extraInfo[selectedId] ?? emptyFields;
+  const recommendedKeys = useMemo(() => {
+    return selectedProduct ? inferRecommendedFieldKeys(selectedProduct) : new Set<string>();
+  }, [selectedProduct]);
+  const selectedSku = String(selectedProduct?.common.erp_sku ?? '').trim() || selectedId;
+  const currentValue = extraInfo[selectedSku] ?? {};
+  const visibleFields = ADDITIONAL_INFO_FIELDS.filter((field) =>
+    enabledFieldKeys.includes(field.key),
+  );
 
-  const updateField = (field: keyof ExtraFields, value: string) => {
-    setExtraInfo((prev) => ({
-      ...prev,
-      [selectedId]: {
-        ...(prev[selectedId] ?? emptyFields),
-        [field]: value,
+  const updateField = (fieldKey: string, value: string) => {
+    const next: ExtraInfoMap = {
+      ...extraInfo,
+      [selectedSku]: {
+        ...(extraInfo[selectedSku] ?? {}),
+        [fieldKey]: value,
       },
-    }));
+    };
+    onChangeExtraInfo(next);
   };
 
   return (
@@ -81,10 +130,10 @@ export default function AdditionalInfoStep({ products, onBack }: Props) {
             <button
               key={product.id}
               type="button"
-              className={`extraProductBtn ${product.id === selectedId ? 'active' : ''}`}
+              className={`extraProductBtn ${product.id === effectiveSelectedId ? 'active' : ''}`}
               onClick={() => setSelectedId(product.id)}
             >
-              {product.common.erp_product_name || product.id}
+              {String(product.common.erp_product_name || product.common.sale_product_name || product.id)}
             </button>
           ))}
         </div>
@@ -92,45 +141,74 @@ export default function AdditionalInfoStep({ products, onBack }: Props) {
         <div className="extraForm">
           {selectedProduct ? (
             <>
-              <div className="formBlock">
-                <label>BSMI 許可字號 {recommended?.bsmi ? '（建議填寫）' : ''}</label>
-                <input
-                  value={currentValue.bsmi}
-                  onChange={(e) => updateField('bsmi', e.target.value)}
-                />
+              <div className="extraFieldSelector">
+                {ADDITIONAL_INFO_FIELDS.map((field) => {
+                  const checked = enabledFieldKeys.includes(field.key);
+                  return (
+                    <label key={field.key} className="extraFieldOption">
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setEnabledFieldKeys((prev) =>
+                              prev.includes(field.key) ? prev : [...prev, field.key],
+                            );
+                          } else {
+                            setEnabledFieldKeys((prev) => prev.filter((key) => key !== field.key));
+                          }
+                        }}
+                      />
+                      {field.label}
+                    </label>
+                  );
+                })}
               </div>
 
-              <div className="formBlock">
-                <label>NCC 許可字號 {recommended?.ncc ? '（建議填寫）' : ''}</label>
-                <input
-                  value={currentValue.ncc}
-                  onChange={(e) => updateField('ncc', e.target.value)}
-                />
+              {visibleFields.map((field) => {
+                const isRecommended = Boolean(field.recommended) || recommendedKeys.has(field.key);
+
+                return (
+                  <div className="formBlock" key={field.key}>
+                    <label>
+                      {field.label}
+                      {isRecommended ? '（建議填寫）' : ''}
+                    </label>
+
+                    {renderFieldControl(field, currentValue[field.key] ?? '', (value) =>
+                      updateField(field.key, value),
+                    )}
+                  </div>
+                );
+              })}
+
+              <div className="submitBar">
+                <button
+                  className="topBarBtn"
+                  type="button"
+                  onClick={onSubmitToGoogleSheet}
+                  disabled={submitLoading}
+                >
+                  {submitLoading ? '送出中...' : '送出到 Google Sheet'}
+                </button>
               </div>
 
-              <div className="formBlock">
-                <label>商檢字號 {recommended?.inspection ? '（建議填寫）' : ''}</label>
-                <input
-                  value={currentValue.inspection}
-                  onChange={(e) => updateField('inspection', e.target.value)}
-                />
-              </div>
-
-              <div className="formBlock">
-                <label>能源效率分級檢驗報告書 {recommended?.energyReport ? '（建議填寫）' : ''}</label>
-                <input
-                  value={currentValue.energyReport}
-                  onChange={(e) => updateField('energyReport', e.target.value)}
-                />
-              </div>
-
-              <div className="formBlock">
-                <label>省水標章 {recommended?.waterLabel ? '（建議填寫）' : ''}</label>
-                <input
-                  value={currentValue.waterLabel}
-                  onChange={(e) => updateField('waterLabel', e.target.value)}
-                />
-              </div>
+              {submitWarnings &&
+              (submitWarnings.missingPriceTagSkus.length > 0 ||
+                submitWarnings.missingPlatformMappings.length > 0) ? (
+                <div className="submitWarningPanel">
+                  {submitWarnings.missingPriceTagSkus.length > 0 ? (
+                    <div>
+                      缺少對應 price_tag SKU：{submitWarnings.missingPriceTagSkus.join(', ')}
+                    </div>
+                  ) : null}
+                  {submitWarnings.missingPlatformMappings.length > 0 ? (
+                    <div>
+                      缺少 price_mapping 平台：{submitWarnings.missingPlatformMappings.join(', ')}
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
             </>
           ) : (
             <div className="emptyPanel">尚未選擇商品</div>

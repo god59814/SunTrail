@@ -5,6 +5,7 @@ type Params = {
   data?: { id?: string };
   context?: {
     updateRowTargets?: (rowId: string, targets: string[]) => void;
+    platformOptions?: string[];
   };
 };
 
@@ -22,9 +23,12 @@ export default function TargetsCellRenderer(props: Params) {
     props.context.updateRowTargets(rowId, nextTargets);
   };
 
+  const options =
+    props.context?.platformOptions?.length ? props.context.platformOptions : [...PLATFORM_OPTIONS];
+
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, padding: '6px 0' }}>
-      {PLATFORM_OPTIONS.map((platform) => {
+      {options.map((platform) => {
         const active = selected.includes(platform);
 
         return (

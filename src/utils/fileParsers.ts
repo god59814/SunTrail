@@ -7,8 +7,25 @@ export type ParsedRecord = Record<string, unknown> & {
   __excelRow: number;
 };
 
+export type ParsedWorkbookData = {
+  records: ParsedRecord[];
+  selectedPlatforms: string[];
+};
+
+export type PriceFieldMeta = {
+  platform: string;
+  kind: 'price' | 'fee' | 'cost';
+};
+
 function normalizeKey(value: unknown) {
   return String(value ?? '').trim();
+}
+
+function splitSelectedPlatforms(value: unknown): string[] {
+  return String(value ?? '')
+    .split(/[,\n|/、]+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
 }
 
 function isLikelySystemKey(value: string) {
@@ -85,17 +102,16 @@ function isDescriptionRow(row: SheetRow) {
 
 function mapRowsToRecords(
   keyRow: SheetRow,
-  dataRows: SheetRow[],
+  dataRows: Array<{ row: SheetRow; excelRow: number }>,
   sheetName: string,
-  startExcelRow: number,
 ): ParsedRecord[] {
   const keys = keyRow.map(normalizeKey);
   return dataRows
-    .filter((row) => row.some((cell) => normalizeKey(cell) !== ''))
-    .map((row, idx) => {
+    .filter(({ row }) => row.some((cell) => normalizeKey(cell) !== ''))
+    .map(({ row, excelRow }) => {
       const record: ParsedRecord = {
         __sheetName: sheetName,
-        __excelRow: startExcelRow + idx,
+        __excelRow: excelRow,
       };
       keys.forEach((key, index) => {
         if (!key) return;
@@ -142,22 +158,30 @@ export async function parsePlatformOptions(file: File): Promise<string[]> {
   return Array.from(new Set(values));
 }
 
-export async function parseAnyTabularFile(file: File): Promise<ParsedRecord[]> {
+export async function parseAnyTabularFile(file: File): Promise<ParsedWorkbookData> {
   const workbook = await readWorkbookFromFile(file);
-  const firstSheetName = workbook.SheetNames[0];
-  if (!firstSheetName) return [];
-  const worksheet = workbook.Sheets[firstSheetName];
-
-  const rows = XLSX.utils.sheet_to_json<SheetRow>(worksheet, {
-    header: 1,
-    defval: '',
-    raw: false,
-    blankrows: false,
+  const targetSheetNames = workbook.SheetNames.filter((name) => {
+    const lowered = name.toLowerCase();
+    return lowered === 'main' || lowered === 'price_tag';
   });
-  if (rows.length === 0) return [];
+  if (targetSheetNames.length === 0) {
+    return { records: [], selectedPlatforms: [] };
+  }
 
-  // 主表 A4 常放全域平台設定，後續可補到每筆資料
-  const globalPlatform = normalizeKey(rows[3]?.[0] ?? '');
+  const mainSheetName = workbook.SheetNames.find((n) => n.toLowerCase() === 'main');
+  let selectedPlatforms: string[] = [];
+  if (mainSheetName) {
+    const mainSheet = workbook.Sheets[mainSheetName];
+    if (mainSheet) {
+      const mainRows = XLSX.utils.sheet_to_json<SheetRow>(mainSheet, {
+        header: 1,
+        defval: '',
+        raw: false,
+        blankrows: false,
+      });
+      selectedPlatforms = splitSelectedPlatforms(mainRows[3]?.[0] ?? '');
+    }
+  }
 
   // 模板結構：
   // 第1列：中文欄位
@@ -172,32 +196,50 @@ export async function parseAnyTabularFile(file: File): Promise<ParsedRecord[]> {
     return -1;
   };
 
-  const keyRowIndex = findKeyRowIndex(rows);
-  if (keyRowIndex === -1) return [];
+  const allRecords: ParsedRecord[] = [];
 
-  let dataStartIndex = keyRowIndex + 1;
+  for (const sheetName of targetSheetNames) {
+    const worksheet = workbook.Sheets[sheetName];
+    if (!worksheet) continue;
 
-  // 若 key 下一列是說明列，就跳過
-  if (rows[dataStartIndex] && isDescriptionRow(rows[dataStartIndex])) {
-    dataStartIndex += 1;
+    const rows = XLSX.utils.sheet_to_json<SheetRow>(worksheet, {
+      header: 1,
+      defval: '',
+      raw: false,
+      blankrows: true,
+    });
+    if (rows.length === 0) continue;
+
+    const keyRowIndex = findKeyRowIndex(rows);
+    if (keyRowIndex === -1) continue;
+
+    let dataStartIndex = keyRowIndex + 1;
+    if (rows[dataStartIndex] && isDescriptionRow(rows[dataStartIndex])) {
+      dataStartIndex += 1;
+    }
+
+    const indexedDataRows = rows.slice(dataStartIndex).map((row, idx) => ({
+      row,
+      excelRow: dataStartIndex + idx + 1,
+    }));
+    const filteredDataRows = indexedDataRows.filter(({ row }) => !isDescriptionRow(row));
+
+    const records = mapRowsToRecords(rows[keyRowIndex] ?? [], filteredDataRows, sheetName).map(
+      (record) => ({
+        ...record,
+        platform:
+          normalizeKey(record.platform) ||
+          (sheetName.toLowerCase() === 'main' ? selectedPlatforms.join('|') : ''),
+      }),
+    );
+
+    allRecords.push(...records);
   }
 
-  // 多一層保險：過濾掉剩餘仍像說明列的 row
-  const rawDataRows = rows.slice(dataStartIndex);
-  const filteredDataRows = rawDataRows.filter((row) => !isDescriptionRow(row));
-
-  const records = mapRowsToRecords(
-    rows[keyRowIndex] ?? [],
-    filteredDataRows,
-    firstSheetName,
-    dataStartIndex + 1,
-  );
-
-  // 資料列沒有 platform 時，回填 A4 全域平台
-  return records.map((record) => ({
-    ...record,
-    platform: normalizeKey(record.platform) || globalPlatform,
-  }));
+  return {
+    records: allRecords,
+    selectedPlatforms,
+  };
 }
 
 export async function parseEboFile(file: File): Promise<Record<string, unknown>[]> {
@@ -238,4 +280,34 @@ export async function parseEboFile(file: File): Promise<Record<string, unknown>[
   }
 
   return bestRows;
+}
+
+export async function parsePriceMapping(file: File): Promise<Record<string, PriceFieldMeta>> {
+  const workbook = await readWorkbookFromFile(file);
+  const sheetName = workbook.SheetNames.find((n) => n.toLowerCase() === 'price_mapping');
+  if (!sheetName) return {};
+
+  const worksheet = workbook.Sheets[sheetName];
+  if (!worksheet) return {};
+
+  const rows = XLSX.utils.sheet_to_json<SheetRow>(worksheet, {
+    header: 1,
+    defval: '',
+    raw: false,
+    blankrows: false,
+  });
+
+  const lookup: Record<string, PriceFieldMeta> = {};
+  for (const row of rows.slice(1)) {
+    const platform = normalizeKey(row[0] ?? '');
+    const priceField = normalizeKey(row[1] ?? '');
+    const feeField = normalizeKey(row[2] ?? '');
+    const costField = normalizeKey(row[3] ?? '');
+
+    if (platform && priceField) lookup[priceField] = { platform, kind: 'price' };
+    if (platform && feeField) lookup[feeField] = { platform, kind: 'fee' };
+    if (platform && costField) lookup[costField] = { platform, kind: 'cost' };
+  }
+
+  return lookup;
 }

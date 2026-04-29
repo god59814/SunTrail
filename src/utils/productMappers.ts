@@ -60,6 +60,7 @@ export function rowsToProducts(rows: Record<string, unknown>[], availableOptions
       sheetName: String(row.__sheetName ?? ''),
       excelRow: Number(row.__excelRow ?? 0),
     },
+    raw: { ...row },
     targets: parseTargets(row.platform ?? row.targets ?? row['上架平台'], availableOptions),
     common: {
       erp_product_name: toPrimitive(row.erp_product_name ?? row['ERP品名']),

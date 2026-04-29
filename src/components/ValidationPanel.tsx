@@ -3,6 +3,12 @@ import type { ValidationIssue } from '../utils/validateProduct';
 type Props = {
   issues: ValidationIssue[];
   lastValidatedAt: number | null;
+  successProductCount?: number;
+  onValidate: () => void;
+  onSubmitToGoogleSheet: () => void;
+  showSubmitToGoogleSheet: boolean;
+  canSubmitToGoogleSheet: boolean;
+  submitLoading?: boolean;
 };
 
 function formatTs(ts: number) {
@@ -13,37 +19,62 @@ function formatTs(ts: number) {
   )} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
-export default function ValidationPanel({ issues, lastValidatedAt }: Props) {
+export default function ValidationPanel({
+  issues,
+  lastValidatedAt,
+  successProductCount = 0,
+  onValidate,
+  onSubmitToGoogleSheet,
+  showSubmitToGoogleSheet,
+  canSubmitToGoogleSheet,
+  submitLoading = false,
+}: Props) {
   const missingCount = issues.filter((i) => i.issueType === 'missing').length;
   const invalidCount = issues.filter((i) => i.issueType === 'invalid_number').length;
+  const isAllClear = issues.length === 0;
 
   return (
     <div className="panel">
       <div className="panelHeader">
         <div className="panelTitle">缺漏與錯誤清單</div>
         <p className="panelSub">
-          {issues.length === 0 ? (
-            <span className="panelOk">全部完成</span>
+          {isAllClear ? (
+            <>
+              <span className="panelOk">全部完成</span>
+              <br />
+              <span className="panelSuccessCount">{`共 ${successProductCount} 筆商品`}</span>
+            </>
           ) : (
-            `共 ${issues.length} 個問題（缺漏 ${missingCount} / 格式錯誤 ${invalidCount}）`
+            <>
+              <span>{`共 ${issues.length} 個問題`}</span>
+              <br />
+              <span className="panelSubDetail">{`（缺漏${missingCount}/格式錯誤${invalidCount}）`}</span>
+            </>
           )}
         </p>
+        <div className="panelActions">
+          <button className="topBarBtn panelActionBtn panelActionValidate" type="button" onClick={onValidate}>
+            驗證
+          </button>
+          {showSubmitToGoogleSheet ? (
+            <button
+              className="topBarBtn panelActionBtn panelActionSubmit"
+              type="button"
+              onClick={onSubmitToGoogleSheet}
+              disabled={!canSubmitToGoogleSheet || submitLoading}
+            >
+              {submitLoading ? '上傳中...' : '上傳到 Google Sheet'}
+            </button>
+          ) : null}
+        </div>
         {lastValidatedAt ? <div className="panelHint">最後驗證：{formatTs(lastValidatedAt)}</div> : null}
       </div>
 
-      <div className="panelSection">
-        <div className="panelLabel">顯示內容</div>
-        <div className="panelValue">資料表 / 列號 / 欄位 / 問題類型 / 說明</div>
-      </div>
-
-      <div className="panelSection">
-        <div className="panelLabel">規則</div>
-        <ul className="panelList">
-          <li>表格僅顯示缺漏或錯誤資料</li>
-          <li>不提供網頁端直接修改</li>
-          <li>請回原始 Excel 修正後重新上傳</li>
-        </ul>
-      </div>
+      {!isAllClear ? (
+        <div className="panelErrorGuide">
+          請依左側表格列出的缺漏與錯誤，回到原始 xlsm 檔案修正後再重新上傳並驗證。
+        </div>
+      ) : null}
     </div>
   );
 }

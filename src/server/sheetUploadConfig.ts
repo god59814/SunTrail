@@ -1,0 +1,9 @@
+import type { GoogleSheetConfig } from './appendRowsToGoogleSheet';
+
+export const SHEET_UPLOAD_CONFIG: GoogleSheetConfig = {
+  cred_path: 'shared/config/suntrail-sheet-fa0613677d68.json',
+  spreadsheet_id: '17IavdRz8cPEBtvjOIW_dJ3r8zfg54itNn40Nq_qnb54',
+  worksheet_name: '上架_PM',
+  header_row: 2,
+  data_start_row: 4,
+};
